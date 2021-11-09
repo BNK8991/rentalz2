@@ -58,7 +58,7 @@ const PropertyDetails: React.FC = () => {
         }
     }
 
-    function handleDeleteProperty() 
+    function handleDeleteProperty() //need more work here, crash on delete
     {
         const isConfirmed = window.confirm("Are you sure to delete?");
         if (isConfirmed) 
