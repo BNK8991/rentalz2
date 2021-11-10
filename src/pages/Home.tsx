@@ -138,12 +138,12 @@ const Home: React.FC = () => {
 
       <IonContent className="ionic-padding">
 
-        <IonSearchbar inputmode='text' placeholder='Search here' onIonChange={(e)=>setSearchString(e.detail.value!)}></IonSearchbar>
+        <IonSearchbar inputmode='text' placeholder='Type here to search' onIonChange={(e)=>setSearchString(e.detail.value!)}></IonSearchbar>
 
        
        {tags}
        {properties &&
-       // IonGird here is treated as a table
+       // IonGrid here is treated as a table
         <IonGrid>
           {/*  each IonRow is a row, each IonCol is a columm in IonRow
           This structure should not be changed */}
