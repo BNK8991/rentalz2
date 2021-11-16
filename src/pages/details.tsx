@@ -31,13 +31,13 @@ const PropertyDetails: React.FC = () => {
 
     const [present, dismiss] = useIonToast();
     
-    const handleUpdateProperty = () => 
+    // const handleUpdateProperty = () => 
+    async function handleUpdateProperty()
     {
         setCheckValid(true)
         if(address.trim().length==0 
         || type.trim().length==0 
         || bedroom.trim().length==0
-        //|| ListingDate.trim().length==0 
         || rent.trim().length==0 
         || reporter.trim().length==0) 
         {
@@ -53,17 +53,17 @@ const PropertyDetails: React.FC = () => {
             address:address, type:type, 
             bedroom:bedroom, ListingDate:ListingDate, rent:Number.parseInt(rent), 
             furniture:furniture, notes:notes, reporter:reporter}
-            updateProperty(updatedProperty);
+            await updateProperty(updatedProperty);
             present("Update successful!", 2000)
         }
     }
 
-    function handleDeleteProperty() //need more work here, crash on delete
+    async function handleDeleteProperty() //need more work here, crash on delete
     {
         const isConfirmed = window.confirm("Are you sure to delete?");
         if (isConfirmed) 
         {
-            deleteProperty(Number.parseInt(id))
+            await deleteProperty(Number.parseInt(id))
             alert('Property deleted from database!')
             setRefresh(!refresh)
             history.goBack();
@@ -76,16 +76,17 @@ const PropertyDetails: React.FC = () => {
         var result = await getAllProperty() as Property[]
         setProperties(result)
 
-        setAddress(property.address);
+        setAddress(property.address) //error here
         setType(property.type)
         setBedroom(property.bedroom.toString())
-        //setListingDate(property.ListingDate)
         setRent(property.rent.toString())
         setFurniture(property.furniture)
         setNotes(property.notes) 
         setReporter(property.reporter)
+        
+        //setRefresh(!refresh)
+        //history.goBack();
     }
-
 
     function checkNotSet()
     {

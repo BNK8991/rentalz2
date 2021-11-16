@@ -152,7 +152,7 @@ const Home: React.FC = () => {
             <IonCol className='list-header-font' size="4">Address</IonCol>
             <IonCol className='list-header-font' size="2">Type</IonCol>
             <IonCol className='list-header-font' size="2">Bedroom</IonCol>
-            <IonCol className='list-header-font' size="3">Reporter</IonCol>
+            <IonCol className='list-header-font' size="2">Reporter</IonCol>
           </IonRow>
           
           {properties.map(p=> (
@@ -169,7 +169,7 @@ const Home: React.FC = () => {
             <IonCol size="2">
               <IonText className='list-data-font'  key={p.id}>{p.bedroom}</IonText>
             </IonCol>
-            <IonCol size="3">
+            <IonCol size="2">
               <IonText className='list-data-font'  key={p.id}>{p.reporter}</IonText>
             </IonCol>
             <IonButton routerLink={'propertyDetails/'+p.id}></IonButton>

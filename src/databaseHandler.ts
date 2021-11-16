@@ -20,7 +20,7 @@ export async function getAllProperty() {
 export async function updateProperty(updateProperty:Property) {
     const db = await openDB(DB_NAME, 1)
     const property= await db.transaction("property").
-          objectStore("property").get(updateProperty.id!) as Property
+    objectStore("property").get(updateProperty.id!) as Property
     property.type = updateProperty.type
     property.bedroom = updateProperty.bedroom
     property.ListingDate = updateProperty.ListingDate
@@ -39,6 +39,7 @@ export async function updateProperty(updateProperty:Property) {
   export async function getPropertyById(id:number) {
     const db = await openDB(DB_NAME, 1);
     const cus= await db.transaction("property").objectStore("property").get(id);
+    //const address= await db.transaction("property").objectStore("property").get(id);
     return cus;
   }
 

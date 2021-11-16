@@ -29,11 +29,11 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/home">
+          <Route exact path="/Home">
             <Home />
           </Route>
           <Route exact path="/">
-            <Redirect to="/home" />
+            <Redirect to="/Home" />
           </Route>
           <Route exact path="/add">
             <Create/>
@@ -43,7 +43,7 @@ const App: React.FC = () => (
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">Home</IonTabButton>
+          <IonTabButton tab="Home" href="/Home">Home</IonTabButton>
           <IonTabButton tab="create" href="/add">Add Property</IonTabButton>
         </IonTabBar>
       </IonTabs>

@@ -1,5 +1,6 @@
 import { useIonToast, IonGrid, IonRow, IonCol, IonIcon, IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonSelect, IonSelectOption, IonText, IonTitle, IonToolbar, IonSearchbar, IonTextarea, IonDatetime } from '@ionic/react';
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 import {insertProperty, getAllProperty, updateProperty } from '../databaseHandler';
 import { Property } from '../model';
 
@@ -24,6 +25,8 @@ const Create: React.FC = () => {
   const [checkValid,setCheckValid] = useState(false)
 
   const [present, dismiss] = useIonToast();
+
+  //const history = goBack();
 
   const [properties, setProperties] = useState<Property[]>([])
 
@@ -80,12 +83,13 @@ const Create: React.FC = () => {
         present('Form is not valid, please try again', 2000)
       }
       else if(isDupplicate() == 'yes') {
-        present('Another property with that address has been registered', 2000)
+        present('Another property with that address has been registered', 1000)
       }
       else if(isDupplicate() == 'no') {
           await insertProperty(property)
           //false->true->false->true
           setRefresh(!refresh)
+          //history.goBack();
 
       }
   }
