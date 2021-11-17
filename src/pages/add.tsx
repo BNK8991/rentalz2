@@ -158,12 +158,14 @@ const Create: React.FC = () => {
           <IonInput onIonChange={e=>setReporter(e.detail.value!)}></IonInput>
           {(checkNotSet().includes('rent')) && <p className="form-error">*Reporter is required</p>}
         </IonItem>
+
         <IonItem>
           <IonLabel position="floating">Notes</IonLabel>
           <IonTextarea onIonChange={e=>setNotes(e.detail.value!)}></IonTextarea>
         </IonItem>
 
         <IonButton onClick={handleSave} expand="full" color="secondary" >Save</IonButton> 
+      
       </IonList>
 
     </IonPage>

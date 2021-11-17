@@ -17,7 +17,7 @@ const PropertyDetails: React.FC = () => {
     const [address,setAddress] = useState('')
     const [type,setType] = useState('')
     const [bedroom,setBedroom] = useState('')
-    const [ListingDate,setListingDate] = useState(new Date())
+    const [ListingDate,setListingDate] = useState(new Date())//.toISOString())
     const [rent,setRent] = useState('')
     const [furniture,setFurniture] = useState('')
     const [notes,setNotes] = useState('')
@@ -186,9 +186,14 @@ const PropertyDetails: React.FC = () => {
             <IonTextarea value = {notes}  onIonChange={e=>setNotes(e.detail.value!)}></IonTextarea>
           </IonItem>
 
-            <IonButton onClick={handleUpdateProperty} expand="full" color="secondary" >Save</IonButton>
+          {/* <IonItem>
+            <IonLabel position="floating">Date</IonLabel>
+            <IonTextarea value = {ListingDate}></IonTextarea>
+          </IonItem> */}
 
-            <IonButton onClick={handleDeleteProperty} expand="full" color="secondary" >Delete</IonButton>
+          <IonButton onClick={handleUpdateProperty} expand="full" color="secondary" >Save</IonButton>
+
+          <IonButton onClick={handleDeleteProperty} expand="full" color="secondary" >Delete</IonButton>
 
         </IonList>
       </IonPage>
