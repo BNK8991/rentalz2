@@ -4,29 +4,23 @@ import { useHistory, useParams } from 'react-router';
 import {insertProperty, getAllProperty, updateProperty } from '../databaseHandler';
 import { Property } from '../model';
 
-    // this is how u pass props between components, must also add the props to the Route element of Create component in App.tsx
-    // for this to work
-  //const Create: React.FC<{properties:Property[]}> = () => {
-
 
 const Create: React.FC = () => {
 
-  const [address,setAddress] = useState('')
-  const [type,setType] = useState('')
-  const [bedroom,setBedroom] = useState('')
-  const [ListingDate,setListingDate] = useState(new Date())//.toISOString())
-  const [rent,setRent] = useState('')
-  const [furniture,setFurniture] = useState('')
-  const [notes,setNotes] = useState('')
-  const [reporter,setReporter] = useState('')
+  const [address, setAddress] = useState<string>('')
+  const [type, setType] = useState<string>('')
+  const [bedroom, setBedroom] = useState<string>('')
+  const [ListingDate, setListingDate] = useState<string>('')
+  const [rent, setRent] = useState<string>('')
+  const [furniture, setFurniture] = useState<string>('')
+  const [notes, setNotes] = useState<string>('')
+  const [reporter, setReporter] = useState<string>('')
 
   const [refresh,setRefresh] = useState(false)
 
   const [checkValid,setCheckValid] = useState(false)
 
   const [present, dismiss] = useIonToast();
-
-  //const history = goBack();
 
   const [properties, setProperties] = useState<Property[]>([])
 
@@ -50,8 +44,7 @@ const Create: React.FC = () => {
     }
     return errorArray
   }
-  // check for dupplicates of address, logically address shouldn't be shared between items in database
-  //Start test
+  // check for repeated address, there shouldn't be 2 offering from the same address, right?
   function isDupplicate()
   {
     var yesOrNo = 'no'
@@ -67,29 +60,27 @@ const Create: React.FC = () => {
 
   // handle for creating new rows
   async function handleSave(){
-      // set checkvalid to true to indicate that we are in the process of checking for invalids
+      // set checkvalid to true --> we are checking for the invalid input here
       setCheckValid(true)
-      // get the current time
-      setListingDate(new Date())
 
 
-      var property = {address:address, type:type, bedroom:bedroom, ListingDate:ListingDate, rent:Number.parseInt(rent), furniture:furniture, notes:notes, reporter:reporter}
-
+      var property = { address: address, type: type, bedroom: bedroom, ListingDate: ListingDate, rent: Number.parseInt(rent), furniture: furniture, notes: notes, reporter: reporter }
       if(address.trim().length==0 
       ||type.trim().length==0 
       ||bedroom.trim().length==0 
       ||rent.trim().length==0 
-      ||reporter.trim().length==0) {
-        present('Form is not valid, please try again', 2000)
+      ||reporter.trim().length==0) 
+      {
+        present('Form is not valid, please try again', 2500)
       }
-      else if(isDupplicate() == 'yes') {
-        present('Another property with that address has been registered', 1000)
+      else if(isDupplicate() == 'yes') 
+      {
+        present('Another property with that address has been registered', 2500)
       }
-      else if(isDupplicate() == 'no') {
+      else if(isDupplicate() == 'no') 
+      {
           await insertProperty(property)
-          //false->true->false->true
           setRefresh(!refresh)
-          //history.goBack();
 
       }
   }
@@ -100,8 +91,7 @@ const Create: React.FC = () => {
     setProperties(result)
   }
 
-//End of test
-
+  // after all validation are done, the data is inserted through these functions
   useEffect(()=>{
     fetchData()
 
@@ -110,6 +100,12 @@ const Create: React.FC = () => {
   return(
     <IonPage>
       <IonList>
+
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Please enter your property overhere</IonTitle>
+        </IonToolbar>
+      </IonHeader>
 
         <IonItem>
           <IonLabel position="floating">Address</IonLabel>
@@ -128,7 +124,7 @@ const Create: React.FC = () => {
         </IonItem>
 
         <IonItem>
-          <IonLabel position="floating">Bedroom</IonLabel>
+          <IonLabel position="floating">Number of Bedrooms</IonLabel>
           <IonSelect onIonChange={(e)=>setBedroom(e.detail.value)}>
               <IonSelectOption value="Studio">Studio</IonSelectOption>
               <IonSelectOption value="One">One</IonSelectOption>
@@ -148,7 +144,7 @@ const Create: React.FC = () => {
         </IonItem>
 
         <IonItem>
-          <IonLabel position="floating">Rent (Please input number)</IonLabel>
+          <IonLabel position="floating">Rent/month (In Euro)</IonLabel>
           <IonInput onIonChange={e=>setRent(e.detail.value!)}></IonInput>
           {(checkNotSet().includes('rent')) && <p className="form-error">*Rent is required</p>}
         </IonItem>
@@ -162,6 +158,11 @@ const Create: React.FC = () => {
         <IonItem>
           <IonLabel position="floating">Notes</IonLabel>
           <IonTextarea onIonChange={e=>setNotes(e.detail.value!)}></IonTextarea>
+        </IonItem>
+
+        <IonItem>
+          <IonLabel position="floating">Date/time</IonLabel>
+          <IonInput type="datetime-local" onIonChange={e => setListingDate(e.detail.value!)}></IonInput>
         </IonItem>
 
         <IonButton onClick={handleSave} expand="full" color="secondary" >Save</IonButton> 

@@ -3,7 +3,7 @@ export interface Property{
     address: string,
     type: string,
     bedroom: string, //turned out using number here is not wise since the database is not supported
-    ListingDate: Date,
+    ListingDate: string,
     rent: number,
     furniture: string,
     notes: string,

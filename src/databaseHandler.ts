@@ -2,7 +2,7 @@ import {openDB} from 'idb'
 import { Property } from './model';
 const DB_NAME= "PropertyDB"
 
-initDB().then(()=>{
+initDB().then(()=>{ //database is created here
     console.log("Database inititilized!")
 })
 
@@ -17,6 +17,7 @@ export async function getAllProperty() {
     return await db.getAll("property")
 }
 
+//setting properties for the Property class
 export async function updateProperty(updateProperty:Property) {
     const db = await openDB(DB_NAME, 1)
     const property= await db.transaction("property").
@@ -31,15 +32,14 @@ export async function updateProperty(updateProperty:Property) {
     await db.put("property",property);
   }
   
-  export async function deleteProperty(id:number) {
+  export async function deleteProperty(id:number) { //delete function here
     const db = await openDB(DB_NAME, 1)
     await db.delete("property",id)
   }
   
-  export async function getPropertyById(id:number) {
+  export async function getPropertyById(id:number) { //This is to pass the property by id, this bit is from the teacher's GitHub repo 
     const db = await openDB(DB_NAME, 1);
-    const cus= await db.transaction("property").objectStore("property").get(id);
-    //const address= await db.transaction("property").objectStore("property").get(id);
+    const cus= await db.transaction("property").objectStore("property").get(id); 
     return cus;
   }
 
