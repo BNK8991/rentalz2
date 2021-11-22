@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="rental_z_the_renting_site"
+        android:textAllCaps="true"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="78dp"
+        android:text="Address:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="120dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="120dp"
+        android:text="Type:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:checkedButton="@id/Type1"
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddress"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/Type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flat"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/Type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bungalow"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/Type3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Bedroom:"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup1"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddress" />
+
+
+    <RadioGroup
+        android:checkedButton="@id/Bedroom1"
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddress">
+
+        <RadioButton
+            android:id="@+id/Bedroom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Studio" />
+
+
+        <RadioButton
+            android:id="@+id/Bedroom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One" />
+
+        <RadioButton
+            android:id="@+id/Bedoom3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Two" />
+
+        <RadioButton
+            android:id="@+id/Bedroom4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More Than Two" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:text="Furniture"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/inputFurniture" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:text="Rent (Euro)"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/inputRent" />
+
+    <EditText
+        android:id="@+id/inputRent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/inputReporter"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
+        android:text="Reporter:"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/inputReporter" />
+
+    <EditText
+        android:id="@+id/inputReporter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/inputNote"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:text="Notes:"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toStartOf="@+id/inputNote" />
+
+    <EditText
+        android:id="@+id/inputNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="125dp"
+        android:text="Date:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/inputDate" />
+
+    <EditText
+        android:id="@+id/inputDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="110dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="date"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="16dp"
+        android:text="Add Property"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/inputFurniture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/inputRent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
